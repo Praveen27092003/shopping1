@@ -1,0 +1,110 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FinalInfo</title>
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/css/style3.css">
+</head>
+<body onload="nextOnload()">
+
+
+    <div class="container-fluid heading p-2">
+        <h1 class="mt-2">DELIVERY</h1>
+    </div>
+    <div class="container-fluid mt-5">
+        <div class="phase1" style="text-align: center;">
+           
+                
+
+            <h1 id="product_name1" style="text-transform: uppercase; color: rgb(22, 149, 143);"></h1>
+            <p id="product_des" style="text-transform: capitalize; font-weight: 600; color: rgb(46, 83, 78);"></p>
+            
+        
+   
+</div>
+        <div class="row mt-5 ">
+            <div class="col-lg-12 col-sm-12 d-flex justify-content-center align-items-center">
+                <div class="card">
+                    <div class="child-card">
+                <img src="" alt="" id="img1" class="" style="width: 300px;">
+                </div>
+            </div>    
+            </div>
+        </div>
+        
+    </div>
+    <div class="phase mt-5 text-white" >
+        <div class="row">
+            <div class="col-lg-12 col-sm-12 ml-auto text-align-center pr-4 ">
+                <div class="">
+                    <div class="">
+        
+        <div class="phase2" style="text-align: center;">
+            <span style="display: inline-block; border: 2px solid rgb(152, 74, 74); padding: 3px; background-color: white; color: black; border-radius: 6px;"><span id="product_sale" style="font-size: 30px;"></span> <del id="product_org" style="color: rgb(72, 68, 68); font-size: 20px;"></del> <span id="product_dis" style="color: green;"></span><span id="product_dis_form" style="color: green;"></span></span>
+            
+                
+                    <h3 class="mt-5">PRICE DETAILS</h3>
+                    <p>PRODUCT PER COST:<span id="per_cost" style="color: green; font-size: 20px; font-weight: bold;"></span></p>
+                    <p> TOTAL QUANTITY:  <span id="total_quantity" style="color: green; font-size: 20px; font-weight: bold;"></span></p>
+                   <p>DISCOUNT:<span id="total_dis" style="color: green; font-size: 20px; font-weight: bold;"></span><span id="total_dis_form"style="color: green; font-size: 20px; font-weight: bold;"></span></p>
+                    
+                    <P>DELIVERY COST: <span style="color: green; font-size: 20px; font-weight: bold;">-$<del>40</del><span>FREE</span></span></P>
+                    <p>TOTAL COST:<span id="total_cost" style="color: green; font-size: 20px; font-weight: bold;"></span></p>
+        </div>
+    </div>
+</div>
+    </div>
+</div>
+    </div>
+    
+</body>
+</html>
+<script>
+
+
+img1.src = localStorage.getItem('productImgSrc');
+function nextOnload(){
+    var product_name1= document.getElementById('product_name1');
+   var product_des= document.getElementById('product_des');
+   var product_sale= document.getElementById('product_sale');
+   var product_org= document.getElementById('product_org');
+   var product_dis= document.getElementById('product_dis');
+   var product_dis_form= document.getElementById('product_dis_form');
+
+
+   
+    var productname2 = localStorage.getItem('productName');
+    var productdes2 = localStorage.getItem('productDescription');
+    var productsale2 = localStorage.getItem('price-sales');
+    var productorg2 = localStorage.getItem('originalPrice');
+    var productdis2 = localStorage.getItem('userDiscount');
+    var productdisform2 = localStorage.getItem('discountFormat');
+
+    var per_cost =document.getElementById('per_cost');
+    var total_quantity =document.getElementById('total_quantity');
+    var total_dis =document.getElementById('total_dis');
+    var total_dis_form =document.getElementById('total_dis_form');
+    var total_cost =document.getElementById('total_cost');
+  
+    var total_quantity1 =localStorage.getItem('pressedquantity');
+
+   product_name1.innerHTML = productname2;
+   product_des.innerHTML = productdes2;
+   product_sale.innerHTML = Math.round(productsale2);
+   product_org.innerHTML = productorg2;
+   product_dis.innerHTML = productdis2;
+   product_dis_form.innerHTML = productdisform2+" OFF";
+
+   per_cost.innerHTML =Math.round(productsale2);
+   total_quantity.innerHTML=total_quantity1;
+   total_dis.innerHTML=productdis2;
+   total_dis_form.innerHTML= productdisform2+" OFF";
+
+   var total_cost1 = Math.round(productsale2)*total_quantity1;
+   total_cost.innerHTML=total_cost1;
+
+}
+
+
+</script>

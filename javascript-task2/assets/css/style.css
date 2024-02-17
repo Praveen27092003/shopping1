@@ -1,0 +1,47 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+.heading{
+    background-image: linear-gradient(to right, #043c10db,#9d1f3c4f);
+}
+
+.heading-h1{
+    text-align: center;
+    text-transform: uppercase;
+    font-family: emoji;
+    font-weight: 800;
+    color: #4ad3cc;
+    background-image: url(../image/back1.png.jpeg);
+    background-position: center;
+    color: transparent;
+    background-clip: text;
+}
+.index{
+    background: #e7e2e3;
+}
+.flipkart-img img{
+    border-radius: 15px;
+    box-shadow: 2px 2px 20px 10px #0c477a;
+    transition: 1s;
+}
+.flipkart-img img:hover{
+   transform: scale(1.17);
+   transition: 1s;
+
+
+}
+#index{
+    height: 100%;
+    background-image: url(../image/page2.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    color: white;
+    font-weight: 600;
+}
+.product-add{
+    display: flex;
+    justify-content: center;
+}

@@ -1,0 +1,133 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ProductInfo</title>
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/css/style2.css">
+</head>
+<body onload="productPage()">
+    <div class="container-fluid heading p-2">
+        <h1 class="mt-2">YOUR PRODUCT</h1>
+    </div>
+    <div class="container-fluid index">
+        <div class="row">
+            <div class="col-lg-5 col-sm-12  text-white mt-3 ">
+            
+    
+            <h2 class="py-2">Product Image</h2>
+            <img src="" alt="" id="img" class="w-100" style="" />
+
+
+            </div>
+            <div class="col-lg-7 col-sm-12 mt-5 ">
+            <h1 id="productname" class="mt-5" style="text-transform: uppercase; font-weight:bolder; color: rgb(13, 113, 99);"></h1>
+            <h4 class="d-flex" style="gap: 5px;"><span id="productprice" style="font-size: 40px;"></span><del style="color: rgba(0, 0, 0, 0.479);" id="productorgprice" class="mt-3"></del><span style="color: green;" class="mt-3"><span id="productdiscount"></span><span id="productdisformat"></span></span> </h4>
+            <p id="productdes" class="mt-3" style="font-size: 20px; color: rgb(19, 164, 138);"></p>
+
+      <div class="max-min mt-5 ml-5" style="display: flex; gap: 1px;">
+    <button onclick="pluse()" style="width: 30px; background-color: rgb(163, 64, 109); color: whitesmoke; font-weight: bolder;" class="mt-5">+</button><input type="text" name="" style="width: 50px; text-align: center;" class="mt-5" id="max_min" value="1" readonly /><button onclick="minus()" style="width: 30px; color: whitesmoke; font-weight: bolder; background-color: rgb(163, 64, 109);" class="mt-5">-</button></div>
+
+
+
+            
+            <div class="product-button mt-5 ml-5">
+                <button type="button" class="btn btn-success" onclick="addcart()" >Add To Cart</button>
+            </div>
+        </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+</body>
+</html>
+
+
+
+<script>
+    var img = document.getElementById('img');
+      img.src = localStorage.getItem('productImgSrc');
+      
+ function productPage(){
+    var productname = document.getElementById('productname');                              
+    var productdes = document.getElementById('productdes');
+    var productprice = document.getElementById('productprice');
+    var productorgprice = document.getElementById('productorgprice');
+    var productdiscount = document.getElementById('productdiscount');
+    var productdisformat = document.getElementById('productdisformat');
+
+    
+    var productname1 = localStorage.getItem('productName');
+    var productdes1 = localStorage.getItem('productDescription');
+    var productprice1 = localStorage.getItem('price-sales');
+    var productorgprice1 = localStorage.getItem('originalPrice');
+    var productdiscount1 = localStorage.getItem('userDiscount');
+    var productdisformat1 = localStorage.getItem('discountFormat');
+   
+    productname.innerHTML=productname1;
+    productdes.innerHTML=productdes1;
+    productprice.innerHTML= Math.round(productprice1);
+    productorgprice.innerHTML=Math.round(productorgprice1);
+    productdiscount.innerHTML=productdiscount1;
+    productdisformat.innerHTML=productdisformat1+'off ';
+
+    
+
+    
+
+    
+ 
+    
+ }
+
+
+
+
+function  pluse()
+        {
+            
+            var max_qua = localStorage.getItem('maxQuantity');
+            var max_min = document.getElementById('max_min');
+
+            console.log(max_qua)
+            if(max_min.value < parseInt(max_qua))
+            {
+                var max_min_value = parseInt(max_min.value);
+                max_min_value++;
+                max_min.value = max_min_value;
+            }
+            localStorage.setItem("pressedquantity",max_min.value);
+        }
+
+
+        function  minus()
+        {
+            
+            var max_qua = localStorage.getItem('maxQuantity');
+            var max_min = document.getElementById('max_min');
+
+            console.log(max_qua)
+            if(max_min.value > 1)
+            {
+                var max_min_value = parseInt(max_min.value);
+                max_min_value--;
+                max_min.value = max_min_value;
+            }
+            localStorage.setItem("pressedquantity",max_min.value);
+
+        }
+
+
+
+
+function addcart()
+        {
+            window.location.href = 'final.html';
+        }
+</script>

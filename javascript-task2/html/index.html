@@ -1,0 +1,342 @@
+<!doctype html>
+<html lang="en">
+  <head>
+   
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.2.1/dist/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+   <link rel="stylesheet" href="../assets/css/style.css">
+    <title>shopping</title>
+  </head>
+  <body>
+<div class="heading p-3">
+       <h1 class="heading-h1">shopping</h1>
+    
+</div>
+
+
+
+<section id="index">
+    <div class="container pt-5">
+        <div class="row">
+            <div class="col-sm-12 col-lg-6 col-md-12 flipkart-img">
+                
+               
+                <label for="product_img">Product Image:</label>
+                <input type="file" name="product_img" id="product_img" onchange="productImg(event)" required>
+                <img src=""  alt="" id="productimg" width="100%" height=""  class="mt-5"/>
+        <p style="display: none;" id="imgerror">!Choose the Image !</p>
+
+        
+
+
+</div>
+<div class="col-sm-12 col-lg-6 col-md-12 mb-5">
+
+    <table>
+        <tr>
+            <td>
+    <div class="name-details" style="" >
+        <span for="">Name :</span>
+         <input type="text" placeholder="Enter Name" id="name" class=" ml-5" style="position: relative; left: 37px; " >
+        <p style="display: none;" id="nameerror">!Enter the Name !</p>
+     
+         </div>
+        </td>
+        </tr>
+    <tr>
+        <td>
+    <div class="description mt-3" style=" ">
+    <span style=" ">Description :</span><textarea type="text"id="site-description"  name="site-description" class="ml-4" required cols="26" rows="3" style="position: relative; left: 27px;"></textarea>
+   <p style="display: none;" id="descriptionerror">!Enter the Description !</p>
+
+   </div>
+</td>
+</tr>
+
+    <div class="amount ">
+        <tr><td>
+    <div class="original-price mt-2">
+   <label for="">Original Price :</label> <input type="text" placeholder="Enter Amount" id="original-price" class="ml-4 " style="position: relative; left: 10px;" >
+   <p style="display: none;" id="originalpriceerror">!Enter the Price !</p>
+
+    </div>
+</td></tr>
+    <tr><td>
+    <div class="user-discount">
+        <span>Discount :</span><input type="number" id="discount-user" placeholder="Enter the Discount" class="ml-5" style="position: relative; left: 25px;">
+   <p style="display: none;" id="discounterror">! Enter the Discount !</p>
+
+        </div>
+    </td></tr>
+    <tr><td>
+
+    <div class="amount-format mt-2">
+        <label for="">Discount-Format :</label>
+        <select name="" id="discount" onchange="validateDiscount(event)" class="ml-2" style="position: relative; left: 5px;">
+   <option value="">Select Discount Format</option>
+   <option value="Percentage%">Percentage</option>
+   <option value="Flat">Flat</option>
+        </select>
+    </div>
+</td></tr>
+
+    <tr><td>
+        
+        <div class="sales-price">
+            <span>Sales Prices:</span> <input type="text" readonly name="price-sales" id="price-sales" class="ml-5" style="position: relative; left: 9px;">
+          
+
+        </div>
+</td></tr>
+
+<tr><td>
+
+    <div class="quantity mt-2 ">
+        <span>Maximum Quantity :</span><input type="number" id="max-quantity"  name="max-quantity" class="" required>
+        <p style="display: none;" id="quantityerror">! Enter the Quantity !</p>
+    </div>
+</td></tr>
+
+   </div>
+   <tr><td>
+   <div class="product-add mb-5 mt-3">
+    <button type="button" class="btn btn-success mt-5" onclick="productinfo(),productinfo1(event)" >Add Product</button>
+  
+   </div>
+</td></tr>
+</table>
+</div>
+</div>
+</div>
+</section>
+
+   
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.6/dist/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.2.1/dist/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+  </body>
+
+
+  <!-- js start -->
+  <script>
+
+function validateDiscount(event){
+    var productName = document.getElementById('name').value;
+    localStorage.setItem('productName',productName);
+
+    var productDescription = document.getElementById('site-description').value;
+    localStorage.setItem('productDescription',productDescription);
+
+
+    var originalPrice = document.getElementById('original-price').value;
+    localStorage.setItem('originalPrice',originalPrice);
+
+
+    var Discount = event.target.value;
+    var userDiscount = document.getElementById('discount-user').value;
+    localStorage.setItem('userDiscount',userDiscount);
+    var discountFormat = document.getElementById('discount').value;
+    localStorage.setItem('discountFormat',discountFormat);
+
+    var salesprice = document.getElementById('price-sales').value;
+   
+
+
+    var maxQuantity = document.getElementById('max-quantity').value;
+    localStorage.setItem('maxQuantity',maxQuantity);
+
+  
+
+
+
+
+
+    var userDiscountMul = userDiscount/100;
+    var userDiscountSub = originalPrice-userDiscount;
+    console.log(salesPrice);
+    
+    if(originalPrice){
+        document.getElementById('originalpriceerror').style="display:none;";
+
+    }else{
+        document.getElementById('originalpriceerror').style="display:block;color:red;";
+
+    }
+    if(userDiscount){
+        document.getElementById('discounterror').style="display:none;";
+        
+
+    }else{
+        document.getElementById('discounterror').style="display:block;color:red;";
+
+    }
+    if(productDescription){
+        document.getElementById('descriptionerror').style="display:none;";
+        
+
+    }else{
+        document.getElementById('descriptionerror').style="display:block;color:red;";
+
+    }
+    if(productName){
+        document.getElementById('nameerror').style="display:none;";
+        
+
+    }else{
+        document.getElementById('nameerror').style="display:block;color:red;";
+
+    }
+   
+   
+    
+
+    
+    
+    if (Discount == 'Percentage%') {
+        var salesPrice = originalPrice*userDiscountMul;
+    document.getElementById('price-sales').value =salesPrice;
+    localStorage.setItem('price-sales',salesPrice);
+        
+    }else{
+        var salesPrice = userDiscountSub;
+    document.getElementById('price-sales').value =salesPrice;
+    localStorage.setItem('price-sales',salesPrice);
+
+    }
+    var productDescription = document.getElementById('site-description').value;
+     var productDescription1 = productDescription.substr(0,100)+"...";
+         document.getElementById('site-description').value = productDescription1;
+
+
+   
+   
+}
+
+function productImg(event)
+{
+    console.log('event --- ',event.target.files[0]);
+    var reader = new FileReader();
+    
+    console.log(reader.result);
+    reader.onload = function(){
+        var output = document.getElementById('productimg');
+        output.src = reader.result;
+        
+        localStorage.setItem('productImgSrc', reader.result);
+
+    };
+    reader.readAsDataURL(event.target.files[0]);
+}
+
+
+
+function productinfo(){
+    var productName = document.getElementById('name').value;
+
+    if(productName == " "){
+        document.getElementById('nameerror').style="display:none;";
+
+    }else{
+        document.getElementById('nameerror').style="display:block;color:red;";
+
+    }
+    
+
+   
+
+    var originalPrice = document.getElementById('original-price').value;
+    
+
+
+    var Discount = event.target.value;
+    var userDiscount = document.getElementById('discount-user').value;
+   
+    var discountFormat = document.getElementById('discount').value;
+    
+    var salesprice = document.getElementById('price-sales').value;
+   
+
+
+    var maxQuantity = document.getElementById('max-quantity').value;
+    localStorage.setItem('maxQuantity',maxQuantity);
+
+    var image = document.getElementById('productimg').value;
+
+    var productDescription = document.getElementById('site-description').value;
+
+    
+   
+
+    
+    
+
+    
+    if(originalPrice){
+        document.getElementById('originalpriceerror').style="display:none;";
+
+    }else{
+        document.getElementById('originalpriceerror').style="display:block;color:red;";
+
+    }
+    if(userDiscount){
+        document.getElementById('discounterror').style="display:none;";
+        
+
+    }else{
+        document.getElementById('discounterror').style="display:block;color:red;";
+
+    }
+    if(productDescription){
+        document.getElementById('descriptionerror').style="display:none;";
+        
+
+    }else{
+        document.getElementById('descriptionerror').style="display:block;color:red;";
+
+    }
+    if(productName){
+        document.getElementById('nameerror').style="display:none;";
+        
+
+    }else{
+        document.getElementById('nameerror').style="display:block;color:red;";
+
+    }
+    if(maxQuantity){
+        document.getElementById('quantityerror').style="display:none;";
+        
+
+    }else{
+        document.getElementById('quantityerror').style="display:block;color:red;";
+
+    }
+    if(image){
+        document.getElementById('imgerror').style="display:none;";
+        
+
+    }else{
+        document.getElementById('imgerror').style="display:block;color:red;";
+
+    }
+   
+    
+
+
+    
+     
+}
+function productinfo1(){
+ 
+
+
+  
+  if (document.getElementById("name").value && document.getElementById("site-description").value && document.getElementById("original-price").value && document.getElementById("price-sales").value && document.getElementById("max-quantity").value && document.getElementById("product_img").value && document.getElementById('discount-user').value) {
+            window.location.href = "productinfo.html";
+        }
+
+}
+
+
+  </script>
+</html>
