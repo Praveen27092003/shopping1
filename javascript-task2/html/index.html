@@ -194,7 +194,7 @@ function validateDiscount(event){
     
     
     if (Discount == 'Percentage%') {
-        var salesPrice = originalPrice*userDiscountMul;
+        var salesPrice =originalPrice-originalPrice*userDiscountMul;
     document.getElementById('price-sales').value =salesPrice;
     localStorage.setItem('price-sales',salesPrice);
         
